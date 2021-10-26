@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+jspm_packages/
 
 # testing
 /coverage
@@ -21,3 +22,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# dotenv environment variables file
+.env
+.env.test
+
+# package-lock.json
+package-lock.json
