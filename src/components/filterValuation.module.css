@@ -20,6 +20,12 @@
     opacity: 0;
   }
   
+  .wrapper p {
+    position: relative;
+    float: right;
+    color: #C8C8C8;
+  }
+
   .wrapper label {
     position: relative;
     float: right;

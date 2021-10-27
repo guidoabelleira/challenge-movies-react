@@ -39,7 +39,6 @@ export function searchMovies(input){
 }
 
 export function filterByRate(filter){
-    console.log("action filter: ", filter)
     return function(dispatch){
         dispatch({
             type: 'FILTER_BY_RATE',

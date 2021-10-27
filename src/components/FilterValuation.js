@@ -13,31 +13,37 @@ const FilterValuation = () => {
         let x = rateFilter;
         let y = x - 2;
         
-        let newState = state?.map(function(movie, key){
-            if(Math.floor(movie.vote_average) >= y && Math.floor(movie.vote_average) < x){
-                return movie
-            } else {
-                return null
-            }
-        })
-        return newState.filter(e => e !== null);
+        if(state !== null){
+            let newState = state?.map(function(movie, key){
+                if(Math.floor(movie.vote_average) >= y && Math.floor(movie.vote_average) < x){
+                    return movie
+                } else {
+                    return null
+                }
+            })
+            return newState.filter(e => e !== null);
+        } 
+        
     }
     
     const handleReviewRate = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         setRate(e.target.value);
         if(rate !== e.target.value){
             let result = filter(e.target.value);
-            dispatch(filterByRate(result));
+            if(result.length === 0) {
+                return dispatch(filterByRate([null]));
+            }
+            return dispatch(filterByRate(result));
         } else {
-            dispatch(getMovies());
+            return dispatch(getMovies());
         } 
         
     }
 
     return (
         <div className={style.wrapper}>
-            <p>Rating filter: </p>
+            <p>  Rating </p>
             <input name="ratingRadio" type="radio" id="st5" value="10" onClick={e => handleReviewRate(e)}/>
             <label htmlFor="st5"></label>
             <input name="ratingRadio" type="radio" id="st4" value="8" onClick={e => handleReviewRate(e)}/>
