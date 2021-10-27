@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Challenge Movies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto se inició con [Create React App](https://github.com/facebook/create-react-app).
 
 ### Instrucciones para correr el proyecto
 
