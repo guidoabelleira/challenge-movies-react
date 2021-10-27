@@ -11,7 +11,7 @@ const UserProvider = ({ children }) => {
     const login = () => {
         const setInitialUser = JSON.parse(localStorage.getItem('localMovie'))
 
-        const initialUserBase = { id: 1, name: 'Guido', favoriteMovies: []}
+        const initialUserBase = { id: 1, name: 'Usuario', favoriteMovies: []}
 
         const initialUser = setInitialUser? setInitialUser : initialUserBase;
         
