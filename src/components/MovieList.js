@@ -8,31 +8,36 @@ const MovieList = () => {
     const dispatch = useDispatch()
     const movies = useSelector(state => state.allMovies);
 
-    console.log(movies.results)
+    console.log("moviesList state: ",movies)
 
     useEffect(() => {
-        async function getters(){
-            await dispatch(getMovies())
-        }
-        getters();
+        // if(movies.length === 0){
+        //     dispatch(getMovies())
+        // }   
+        dispatch(getMovies())
     },[dispatch]);
     
-    return movies.results ? (
+    return movies.length !== 0 ? (
         <div className="container">
             <div className="row">
-                {movies.results.map(movie => (
-                    <div className="col-md-4" key={movie.id}>
+                {movies.map(movie => (
+                    movie !== null ? (
+                        <div className="col-md-4" key={movie.id}>
                         <Movie 
                             movie={movie}
                         />
                     </div>
+                    ) : ( <></> )
                 ))}
             </div>
         </div>
     ) : (
-        <>
-            <p>Loading...</p>
-        </>
+        <div className="d-grid gap-2">
+            <div className="alert alert-primary" role="alert">
+                Algo salio mal!
+            </div>
+            <button className="btn btn-primary" type="button">Recargar</button>
+        </div>
     )
 }
 

@@ -10,7 +10,17 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 allMovies: action.payload,
             }
-        
+        case 'SEARCH_MOVIES':
+            return {
+                ...state,
+                allMovies: action.payload,
+            }
+        case 'FILTER_BY_RATE':
+            return {
+                ...state,
+                allMovies: action.payload,
+            }
+
         default: {
             return state
             }

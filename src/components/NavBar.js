@@ -1,25 +1,48 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import UserContext from '../contexts/UserContext';
+import { useDispatch } from 'react-redux';
+
+import { searchMovies } from '../actions/index';
 
 
 const NavBar = () => {
 
     const { user, login, logout } = useContext(UserContext);
 
-    // Referencia de API: https://developers.themoviedb.org/3/search/search-movies
+    const dispatch = useDispatch();
+    const [input, setInput] = useState('');
+
+    
+    function handleInputChange(e) {
+        setInput(e.target.value)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        dispatch(searchMovies(input))
+    }
+
 
     return (
         
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
 
                 <span className="navbar-brand mb-3">
                     <h2>{user ? `Hola ${user.name}` : 'Bienvenid@'}</h2>
                 </span>
         
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form className="d-flex">
+                    <input className="form-control me-2" 
+                    type="search" placeholder="Buscar" 
+                    aria-label="Search"
+                    onChange={(handleInputChange)}
+                    />
+                    <button className="btn btn-primary" 
+                    type="submit"
+                    onClick={handleSubmit}>
+                        Buscar
+                    </button>
                 </form>
 
                 { user ? 

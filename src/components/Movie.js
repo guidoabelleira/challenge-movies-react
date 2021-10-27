@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import UserContext from '../contexts/UserContext';
+import RateStar from './RateStar';
 
 const Movie = ({movie}) => {
 
@@ -23,6 +24,7 @@ const Movie = ({movie}) => {
             />
             <div className="card-body">
                 <h4>{movie.title}</h4>
+                <RateStar props={movie.vote_average} />
                 { user?.id &&
                     <button 
                     className={`btn ${isFavorite ? 'btn-success' : 'btn btn-outline-primary'}`}
